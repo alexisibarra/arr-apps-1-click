@@ -32,7 +32,6 @@ services:
       - '.env'
 
 # RADARR
-
   radarr:
     image: linuxserver/radarr:latest
     container_name: radarr
@@ -48,40 +47,7 @@ services:
     env_file:
       - '.env'
 
-# LIDARR
-
-  # lidarr:
-  #   image: linuxserver/lidarr:latest
-  #   container_name: lidarr
-  #   hostname: lidarr
-  #   volumes:
-  #     - ${ARRPATH}Lidarr/config:/config
-  #     - ${MEDIAPATH}Music:/data/musicfolder
-  #     - ${MEDIAPATH}Downloads:/downloads
-  #   ports:
-  #     - 8686:8686
-  #   restart: unless-stopped
-  #   env_file:
-  #     - '.env'
-
-# READARR
-
-  # readarr:
-  #   image: linuxserver/readarr:develop
-  #   container_name: readarr
-  #   hostname: readarr
-  #   volumes:
-  #     - ${ARRPATH}Readarr/config:/config
-  #     - ${MEDIAPATH}Books:/data/books
-  #     - ${MEDIAPATH}Downloads:/downloads
-  #   ports:
-  #     - 8787:8787
-  #   restart: unless-stopped
-  #   env_file:
-  #     - '.env'
-
 # HOMARR
-
   homarr:
     container_name: homarr
     image: ghcr.io/homarr-labs/homarr:latest
@@ -96,27 +62,7 @@ services:
     env_file:
       - '.env'
 
-# JELLYFIN
-
-  jellyfin:
-    image: linuxserver/jellyfin
-    container_name: jellyfin
-    ports:
-      - '8096:8096/tcp'   # Jellyfin web interface
-      - '7359:7359/udp'   # Network discovery
-      - '1900:1900/udp'   # DLNA port
-    volumes:
-      - ${ARRPATH}Jellyfin/config:/config
-      - ${MEDIAPATH}Movies:/data/Movies
-      - ${MEDIAPATH}Series:/data/TVShows
-      - ${MEDIAPATH}Music:/data/Music
-      - ${MEDIAPATH}Books:/data/Books
-    env_file:
-      - '.env'
-    restart: unless-stopped
-
 # QBITTORRENT
-
   qbittorrent:
     image: linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -153,3 +99,55 @@ services:
     restart: unless-stopped
     env_file:
       - '.env'
+
+
+# DISABLED SERVICES
+
+
+# LIDARR
+  # lidarr:
+  #   image: linuxserver/lidarr:latest
+  #   container_name: lidarr
+  #   hostname: lidarr
+  #   volumes:
+  #     - ${ARRPATH}Lidarr/config:/config
+  #     - ${MEDIAPATH}Music:/data/musicfolder
+  #     - ${MEDIAPATH}Downloads:/downloads
+  #   ports:
+  #     - 8686:8686
+  #   restart: unless-stopped
+  #   env_file:
+  #     - '.env'
+
+# READARR
+  # readarr:
+  #   image: linuxserver/readarr:develop
+  #   container_name: readarr
+  #   hostname: readarr
+  #   volumes:
+  #     - ${ARRPATH}Readarr/config:/config
+  #     - ${MEDIAPATH}Books:/data/books
+  #     - ${MEDIAPATH}Downloads:/downloads
+  #   ports:
+  #     - 8787:8787
+  #   restart: unless-stopped
+  #   env_file:
+  #     - '.env'
+
+# JELLYFIN
+  # jellyfin:
+  #   image: linuxserver/jellyfin
+  #   container_name: jellyfin
+  #   ports:
+  #     - '8096:8096/tcp'   # Jellyfin web interface
+  #     - '7359:7359/udp'   # Network discovery
+  #     - '1900:1900/udp'   # DLNA port
+  #   volumes:
+  #     - ${ARRPATH}Jellyfin/config:/config
+  #     - ${MEDIAPATH}Movies:/data/Movies
+  #     - ${MEDIAPATH}Series:/data/TVShows
+  #     - ${MEDIAPATH}Music:/data/Music
+  #     - ${MEDIAPATH}Books:/data/Books
+  #   env_file:
+  #     - '.env'
+  #   restart: unless-stopped
