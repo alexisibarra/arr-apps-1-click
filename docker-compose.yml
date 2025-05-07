@@ -181,3 +181,17 @@ services:
     env_file:
       - '.env'
 
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    hostname: bazarr
+    volumes:
+      - /path/to/bazarr/config:/config
+      - ${MEDIAPATH}Movies:/data/movies
+      - ${MEDIAPATH}/Series:/data/tvshows
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+    env_file:
+      - '.env'
