@@ -9,15 +9,24 @@ cd /home/marek/Downloads <br />
 unzip youtube-39-arr-apps-1-click <br />
 
 ### Installation process:
+
+#### Environment Variables
+1. Copy the example environment file:
+  ```bash
+  cp .env-example .env
+  ```
+2. Open `.env` and fill in the required values for your setup (database, API keys, etc).
+3. Save the file. The application will use these variables when starting up.
+
 Make sure you are in the same folder as docker-compose.yml and .env file, then 'up' to deploy, 'stop' and 'rm' to stop and remove the stack  :<br />
 
 ```bash
-sudo docker-compose up -d 
+sudo docker-compose up -d
 sudo docker-compose stop
-sudo docker-compose rm 
+sudo docker-compose rm
 ```
 
-Chage ownership of the folder specified in .env file (by default its /media/Arr) and 
+Chage ownership of the folder specified in .env file (by default its /media/Arr) and
 run 'chown' command with the user id and group id configured in that .env file:<br />
 `chown -R 1000:1000 /media/Arr`<br />
 Now you can log on and work with all services.<br />
