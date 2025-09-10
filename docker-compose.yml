@@ -100,7 +100,24 @@ services:
     env_file:
       - '.env'
 
-
+# FILEBROWSER
+  filebrowser:
+    image: filebrowser/filebrowser:v2-s6
+    container_name: filebrowser
+    hostname: filebrowser
+    volumes:
+      - /mnt/storage:/srv
+      - ./filebrowser.db:/database/filebrowser.db
+    ports:
+      - 4545:80 # Host_Port:Container_Port - Change 8080 if another service uses it
+    restart: unless-stopped
+    env_file:
+      - '.env'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 # DISABLED SERVICES
 
 
